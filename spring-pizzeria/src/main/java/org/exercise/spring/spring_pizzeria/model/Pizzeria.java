@@ -73,13 +73,11 @@ public class Pizzeria {
 
     @Override
     public String toString() {
-        return "{" +
-                " id='" + getId() + "'" +
-                ", nome='" + getNome() + "'" +
-                ", description='" + getDescription() + "'" +
-                ", foto='" + getFoto() + "'" +
-                ", prezzo='" + getPrezzo() + "'" +
-                "}";
+        return "id=" + getId() +
+                ", nome=" + getNome() +
+                ", description=" + getDescription() +
+                ", foto=" + getFoto() +
+                ", prezzo=" + getPrezzo();
     }
 
 }
