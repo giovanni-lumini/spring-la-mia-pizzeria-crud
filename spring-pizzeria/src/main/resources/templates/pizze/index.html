@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizze-Index</title>
+    <!-- importo il frammento styles -->
+    <th:block th:replace="~{fragments/fragments :: styles}"/>   
+</head>
+<body>
+    <!-- importo il frammento header -->
+    <th:block th:replace="~{fragments/fragments :: header}"/>
+
+    <!-- importo il frammento title -->
+    <th:block th:replace="~{fragments/fragments :: title(pageTitle='Ciao io sono la Pizze Page')}"/>
+
+    <!-- importo il frammento button -->
+    <div th:insert="~{fragments/fragments :: button('/', 'Vai alla Homepage')}"></div>
+</body>
+</html>

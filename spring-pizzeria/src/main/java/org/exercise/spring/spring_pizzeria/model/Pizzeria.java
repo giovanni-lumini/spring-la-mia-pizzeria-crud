@@ -23,8 +23,9 @@ public class Pizzeria {
     private String nome;
 
     @Lob
-    private String description;
+    private String descrizione;
 
+    @Lob
     private String foto;
 
     @NotBlank
@@ -47,12 +48,12 @@ public class Pizzeria {
         this.nome = nome;
     }
 
-    public String getDescription() {
-        return this.description;
+    public String getDescrizione() {
+        return this.descrizione;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescrizionen(String descrizione) {
+        this.descrizione = descrizione;
     }
 
     public String getFoto() {
@@ -75,7 +76,7 @@ public class Pizzeria {
     public String toString() {
         return "id=" + getId() +
                 ", nome=" + getNome() +
-                ", description=" + getDescription() +
+                ", descrizione=" + getDescrizione() +
                 ", foto=" + getFoto() +
                 ", prezzo=" + getPrezzo();
     }
