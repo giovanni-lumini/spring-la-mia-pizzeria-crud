@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -30,5 +31,13 @@ public class PizzeController {
         Pizze pizza = pizzeRepository.findById(id).get();
         model.addAttribute("pizza", pizza);
         return "pizze/show";
+    }
+
+    @GetMapping("/nomePizza")
+    // http://localhost:8080/pizze/nomePizza?nome=margherita
+    public String nomePizza(@RequestParam(name = "nome") String nome, Model model) {
+        List<Pizze> pizze = pizzeRepository.findByNome(nome);
+        model.addAttribute("pizze", pizze);
+        return "pizze/index";
     }
 }
