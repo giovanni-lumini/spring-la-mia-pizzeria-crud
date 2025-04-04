@@ -11,12 +11,35 @@
     <!-- importo il frammento header -->
     <th:block th:replace="~{fragments/fragments :: header}"/>
 
-    <!-- importo il frammento title -->
-    <th:block th:replace="~{fragments/fragments :: title(pageTitle='Ciao io sono la Pizze Page')}"/>
+    <div class="text-center m-4">
+        <!-- importo il frammento title -->
+        <th:block th:replace="~{fragments/fragments :: title(pageTitle='Pizze menù')}"/>
+    </div>
 
-    <p th:text="${pizze}"></p>
+    <div class="container m-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-3 card m-2 p-0 d-flex" th:if="${pizze.size()>0}" th:each="pizza : ${pizze}" th:object="${pizza}">
+                <img th:src="*{foto}" class="card-img-top w-100" style="height: 200px; object-fit: cover;" alt="...">
+                <div class="card-body d-flex flex-column justify-content-between m-0">
 
-    <!-- importo il frammento button -->
-    <div th:insert="~{fragments/fragments :: button('/', 'Vai alla Homepage')}"></div>
+                    <h5 class="card-title">[[*{nome}]]</h5>
+                    <p class="card-text" style="height: 50px;">[[*{descrizione}]]</p>
+                    <p class="card-text">€ [[*{prezzo}]]</p>
+                    <a href="#" class="btn btn-primary" >Dettaglio pizza</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div th:text="Non ci sono pizze" th:unless="${pizze.size()>0}"></div>
+
+    <div class="text-center m-4">
+        <!-- importo il frammento button -->
+        <div th:insert="~{fragments/fragments :: button('/', 'Vai alla Homepage')}"></div>
+    </div>
+
+    <!-- importo il frammento footer -->
+<!--     <th:block th:replace="fragments/fragments :: footer('&copy; 2025. Tutti i diritti riservati.')"></th:block>
+ -->
 </body>
 </html>

@@ -29,7 +29,7 @@
                                 <a class="nav-link active text-white" aria-current="page" th:href="@{/}">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active text-white" th:href="@{/books}">PIZZE</a>
+                                <a class="nav-link active text-white" th:href="@{/pizze}">PIZZE</a>
                             </li>
                         </ul>
                 </div>
@@ -38,9 +38,18 @@
         </header>
     </th:block>
 
+    <!-- fragment footer-->
+    <!-- Fragment Footer -->
+    <th:block th:fragment="footer(footerTitle)">
+        <footer class="text-center bg-dark text-white p-4">
+            <h6 th:text="${footerTitle}" class="p-0 m-0"></h6>
+        </footer>
+    </th:block>
+
+
     <!-- fragment title -->
-    <th:block >
-        <h1 th:fragment="title(pageTitle)" th:text="${pageTitle}"></h1>
+    <th:block>
+        <h2 th:fragment="title(pageTitle)" th:text="${pageTitle}"></h2>
     </th:block>
 
     <!-- fragment button -->
