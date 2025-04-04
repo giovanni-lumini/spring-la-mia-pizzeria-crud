@@ -11,10 +11,13 @@
     <!-- importo il frammento header -->
     <th:block th:replace="~{fragments/fragments :: header}"/>
 
-    <!-- importo il frammento title -->
-    <th:block th:replace="~{fragments/fragments :: title(pageTitle='Ciao io sono la HomePage')}"/>
+    <div class="container m-auto text-center mt-5">
+        <!-- importo il frammento title -->
+        <th:block th:replace="~{fragments/fragments :: title(pageTitle='Benvenuto nella mia pizzeria!')}"/>
 
-    <!-- importo il frammento button -->
-    <div th:insert="~{fragments/fragments :: button('/pizze', 'Vai alla Pizze Page')}"></div>
+        <!-- importo il frammento button -->
+        <div th:insert="~{fragments/fragments :: button('/pizze', 'Vai alla Pizze Page')}" class="mt-5"></div>
+    </div>
+
 </body>
 </html>

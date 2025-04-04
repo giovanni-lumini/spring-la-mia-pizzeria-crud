@@ -22,7 +22,8 @@
                 <img th:src="*{foto}" class="card-img-top w-100" style="height: 200px; object-fit: cover;" alt="...">
                 <div class="card-body text-center">
                     <h5 class="card-title mb-3">[[*{nome}]]</h5>
-                    <a href="#" class="btn btn-primary" >Dettaglio pizza</a>
+                    <!-- importo il frammento button -->
+                    <div th:insert="~{fragments/fragments :: button('/pizze/' + *{id}, 'Dettaglio pizza')}"></div>
                 </div>
             </div>
         </div>
@@ -32,7 +33,7 @@
 
     <div class="text-center m-4">
         <!-- importo il frammento button -->
-        <div th:insert="~{fragments/fragments :: button('/', 'Vai alla Homepage')}"></div>
+        <div th:insert="~{fragments/fragments :: button('/', 'Torna alla Homepage')}"></div>
     </div>
 
     <!-- importo il frammento footer -->
