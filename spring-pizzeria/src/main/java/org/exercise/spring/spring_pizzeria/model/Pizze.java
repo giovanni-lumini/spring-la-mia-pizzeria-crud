@@ -51,7 +51,7 @@ public class Pizze {
         return this.descrizione;
     }
 
-    public void setDescrizionen(String descrizione) {
+    public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
 
