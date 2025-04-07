@@ -7,10 +7,16 @@ import org.exercise.spring.spring_pizzeria.repository.PizzeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping("/pizze")
@@ -19,6 +25,7 @@ public class PizzeController {
     @Autowired
     private PizzeRepository pizzeRepository;
 
+    // INDEX
     @GetMapping
     public String index(Model model) {
         List<Pizze> pizze = pizzeRepository.findAll();
@@ -26,6 +33,7 @@ public class PizzeController {
         return "pizze/index";
     }
 
+    // SHOW
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
         Pizze pizza = pizzeRepository.findById(id).get();
@@ -33,6 +41,7 @@ public class PizzeController {
         return "pizze/show";
     }
 
+    // SEARCH BY NAME
     @GetMapping("/nomePizza")
     // http://localhost:8080/pizze/nomePizza?nome=margherita
     public String nomePizza(@RequestParam(name = "nome") String nome, Model model) {
@@ -40,4 +49,21 @@ public class PizzeController {
         model.addAttribute("pizze", pizze);
         return "pizze/index";
     }
+
+    // CREATE
+    @GetMapping("/create")
+    public String create(Model model) {
+        model.addAttribute("pizza", new Pizze());
+        return "pizze/create";
+    }
+
+    @PostMapping("/create")
+    public String store(@Valid @ModelAttribute("pizza") Pizze formPizze, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "pizze/create";
+        }
+        pizzeRepository.save(formPizze);
+        return "redirect:/pizze";
+    }
+
 }

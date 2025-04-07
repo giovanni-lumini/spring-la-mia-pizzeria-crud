@@ -1,7 +1,5 @@
 package org.exercise.spring.spring_pizzeria.model;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pizze")
@@ -28,8 +27,8 @@ public class Pizze {
     @Lob
     private String foto;
 
-    @NotBlank
-    private BigDecimal prezzo;
+    @NotNull
+    private Integer prezzo;
 
     // getter e setter
     public Integer getId() {
@@ -64,11 +63,11 @@ public class Pizze {
         this.foto = foto;
     }
 
-    public BigDecimal getPrezzo() {
+    public Integer getPrezzo() {
         return this.prezzo;
     }
 
-    public void setPrezzo(BigDecimal prezzo) {
+    public void setPrezzo(Integer prezzo) {
         this.prezzo = prezzo;
     }
 
