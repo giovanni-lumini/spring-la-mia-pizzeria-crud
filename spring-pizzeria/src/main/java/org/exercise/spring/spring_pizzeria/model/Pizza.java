@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pizze")
-public class Pizze {
+public class Pizza {
 
     // variabili d'istanza(colonne tabella)
     @Id

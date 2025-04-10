@@ -2,7 +2,7 @@ package org.exercise.spring.spring_pizzeria.controllers;
 
 import java.util.List;
 
-import org.exercise.spring.spring_pizzeria.model.Pizze;
+import org.exercise.spring.spring_pizzeria.model.Pizza;
 import org.exercise.spring.spring_pizzeria.repository.PizzeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class PizzeController {
     // INDEX
     @GetMapping
     public String index(Model model) {
-        List<Pizze> pizze = pizzeRepository.findAll();
+        List<Pizza> pizze = pizzeRepository.findAll();
         model.addAttribute("pizze", pizze);
         return "pizze/index";
     }
@@ -36,7 +36,7 @@ public class PizzeController {
     // SHOW
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
-        Pizze pizza = pizzeRepository.findById(id).get();
+        Pizza pizza = pizzeRepository.findById(id).get();
         model.addAttribute("pizza", pizza);
         return "pizze/show";
     }
@@ -45,7 +45,7 @@ public class PizzeController {
     @GetMapping("/nomePizza")
     // http://localhost:8080/pizze/nomePizza?nome=margherita
     public String nomePizza(@RequestParam(name = "nome") String nome, Model model) {
-        List<Pizze> pizze = pizzeRepository.findByNome(nome);
+        List<Pizza> pizze = pizzeRepository.findByNome(nome);
         model.addAttribute("pizze", pizze);
         return "pizze/index";
     }
@@ -53,12 +53,12 @@ public class PizzeController {
     // CREATE
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("pizza", new Pizze());
+        model.addAttribute("pizza", new Pizza());
         return "pizze/create";
     }
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("pizza") Pizze formPizze, BindingResult bindingResult, Model model) {
+    public String store(@Valid @ModelAttribute("pizza") Pizza formPizze, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "pizze/create";
         }
@@ -74,7 +74,7 @@ public class PizzeController {
     }
 
     @PostMapping("/edit/{id}")
-    public String edit(@Valid @ModelAttribute("pizza") Pizze formPizze, BindingResult bindingResult, Model model) {
+    public String edit(@Valid @ModelAttribute("pizza") Pizza formPizze, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "pizze/edit";
         }
