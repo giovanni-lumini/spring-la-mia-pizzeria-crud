@@ -18,7 +18,7 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "Il campo prezzo non può essere vuoto")
+    @NotBlank(message = "Il campo nome non può essere vuoto")
     private String nome;
 
     @Lob
