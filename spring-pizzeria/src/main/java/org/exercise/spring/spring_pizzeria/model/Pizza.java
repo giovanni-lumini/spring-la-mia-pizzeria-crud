@@ -18,7 +18,7 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "Il campo prezzo non può essere vuoto")
     private String nome;
 
     @Lob
@@ -27,7 +27,7 @@ public class Pizza {
     @Lob
     private String foto;
 
-    @NotNull
+    @NotNull(message = "Il campo prezzo non può essere vuoto")
     private Integer prezzo;
 
     // getter e setter
